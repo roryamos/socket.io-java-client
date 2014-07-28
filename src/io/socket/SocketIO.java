@@ -35,6 +35,8 @@ public class SocketIO {
 	private Properties headers = new Properties();
 
 	private URL url;
+	
+	private String queryString;
 
 	/**
 	 * Instantiates a new socket.io connection. The object connects after
@@ -211,8 +213,9 @@ public class SocketIO {
 			this.callback = callback;
 		}
 		if (this.callback != null && this.url != null) {
-			final String origin = this.url.getProtocol() + "://"
-					+ this.url.getAuthority();
+//			final String origin = this.url.getProtocol() + "://"
+//					+ this.url.getAuthority();
+			final String origin = this.url.getProtocol() + "://" + this.url.getAuthority();
 			this.namespace = this.url.getPath();
 			if (this.namespace.equals("/")) {
 				this.namespace = "";
@@ -233,7 +236,7 @@ public class SocketIO {
 	 * @param args
 	 *            arguments. can be any argument {@link org.json.JSONArray#put(Object)} can take. 
 	 */
-	public void emit(final String event, final Object... args) {
+	public void emit(final String event, final String args) {
 		this.connection.emit(this, event, null, args);
 	}
 
@@ -250,7 +253,7 @@ public class SocketIO {
 	 *            arguments. can be any argument {@link org.json.JSONArray#put(Object)} can take. 
 	 */
 	public void emit(final String event, IOAcknowledge ack,
-			final Object... args) {
+			final String args) {
 		this.connection.emit(this, event, ack, args);
 	}
 
@@ -364,6 +367,15 @@ public class SocketIO {
 	public Properties getHeaders() {
 		return headers;
 	}
+	
+
+    public String getQueryString() {
+       return this.queryString;
+    }
+   
+    public void setQueryString(String query) {
+       this.queryString = query;
+    }
 
 	/**
 	 * Sets the headers used while handshaking. Internally used. Use

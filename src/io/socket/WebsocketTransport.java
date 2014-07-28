@@ -17,10 +17,10 @@ class WebsocketTransport extends WebSocketClient implements IOTransport {
     public static final String TRANSPORT_NAME = "websocket";
     private IOConnection connection;
     public static IOTransport create(URL url, IOConnection connection) {
-        URI uri = URI.create(
-                PATTERN_HTTP.matcher(url.toString()).replaceFirst("ws")
-                + IOConnection.SOCKET_IO_1 + TRANSPORT_NAME
-                + "/" + connection.getSessionId());
+    	String connectionUrl =PATTERN_HTTP.matcher(url.toString()).replaceFirst("ws")+IOConnection.SOCKET_IO_V1;
+    	connectionUrl += "?b64=1&transport="+TRANSPORT_NAME+"&sid="+connection.getSessionId();
+    	//System.out.println(connectionUrl);
+        URI uri = URI.create(connectionUrl);
 
         return new WebsocketTransport(uri, connection);
     }
