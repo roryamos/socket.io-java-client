@@ -1,5 +1,9 @@
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=Gottox&url=https://github.com/Gottox/socket.io-java-client&title=socket.io-java-client&language=&tags=github&category=software)
 
+# Socket.IO V1.0 - Client for Java
+Try let this Library can support Socket.io 1.0.
+last modify at 2014/7/28
+
 # Socket.IO-Client for Java
 
 socket.io-java-client is an easy to use implementation of [socket.io](http://socket.io) for Java.
